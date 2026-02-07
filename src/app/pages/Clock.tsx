@@ -13,7 +13,11 @@ export default function Clock() {
 
   return (
     <div className="text-sm opacity-80">
-      {time.toLocaleTimeString()}
+      {time.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      })}
     </div>
   );
 }
