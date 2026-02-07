@@ -16,10 +16,22 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </SimulationProvider>
   </React.StrictMode>
 );
-setInterval(() => {
+function startClock() {
   const el = document.getElementById('live-clock');
-  if (el) {
-    el.textContent = new Date().toLocaleTimeString();
+
+  if (!el) {
+    requestAnimationFrame(startClock);
+    return;
   }
-}, 1000);
+
+  setInterval(() => {
+    el.textContent = new Date().toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    });
+  }, 1000);
+}
+
+startClock();
 
