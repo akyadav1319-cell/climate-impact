@@ -32,11 +32,28 @@ export function DashboardLayout({
 }: DashboardLayoutProps) {
   const { theme, setTheme } = useTheme();
 
-  import Clock from '../components/Clock';
-
-export default function DashboardLayout({ children }) {
+ export default function DashboardPage2() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="dashboard-layout">
+      
+      {/* TOP BAR / HEADER */}
+      <header className="flex justify-between items-center p-4">
+        <h1>Climate Policy Simulator</h1>
+
+        {/* 👇 CLOCK GOES HERE */}
+        <div id="live-clock" className="text-sm opacity-80">
+          --:--:--
+        </div>
+      </header>
+
+      {/* REST OF DASHBOARD */}
+      <main>
+        {/* content */}
+      </main>
+
+    </div>
+  );
+}
       
       {/* STATIC HEADER */}
       <header className="flex justify-between items-center p-4">
