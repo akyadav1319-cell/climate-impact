@@ -1,11 +1,10 @@
-import { defineConfig } from 'vite'
-import path from 'path'
-import tailwindcss from '@tailwindcss/vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
-  // 🔥 ADD THIS LINE (replace with your repo name)
-  base: '/climate-impact/',
+  base: '/policy-impact-simulation-website/',
 
   plugins: [
     react(),
@@ -14,9 +13,9 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 
   assetsInclude: ['**/*.svg', '**/*.csv'],
-})
+});
