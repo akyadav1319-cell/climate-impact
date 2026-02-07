@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Moon, Sun, Download, Play, RotateCcw, Shield, Clock, User } from 'lucide-react';
+import { Moon, Sun, Download, Play, RotateCcw, Shield,  User } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from './ui/button';
 import {
@@ -32,17 +32,26 @@ export function DashboardLayout({
 }: DashboardLayoutProps) {
   const { theme, setTheme } = useTheme();
 
-  // Get current timestamp
-  const currentTime = new Date().toLocaleString('en-US', {
-    weekday: 'short',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  });
+  import Clock from '../components/Clock';
+
+export default function DashboardLayout({ children }) {
+  return (
+    <div className="min-h-screen flex flex-col">
+      
+      {/* STATIC HEADER */}
+      <header className="flex justify-between items-center p-4">
+        <h1>Climate Policy Simulator</h1>
+        <Clock /> {/* 👈 PERFECT */}
+      </header>
+
+      {/* DYNAMIC CONTENT */}
+      <main className="flex-1">
+        {children}
+      </main>
+
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
