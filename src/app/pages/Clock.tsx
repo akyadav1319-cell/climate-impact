@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
 
 export default function Clock() {
-  const [time, setTime] = useState(new Date());
+  const [now, setNow] = useState(Date.now());
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
+    let rafId: number;
 
-    return () => clearInterval(interval);
+    const tick = () => {
+      setNow(Date.now());
+      rafId = requestAnimationFrame(tick);
+    };
+
+    tick();
+    return () => cancelAnimationFrame(rafId);
   }, []);
+
+  const time = new Date(now);
 
   return (
     <div className="text-sm opacity-80">
