@@ -4,8 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
-  base: '/policy-impact-simulation-website/',
-
+ 
   plugins: [
     react(),
     tailwindcss(),
